@@ -7,13 +7,13 @@ part 'chuck_category_list_response.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ChuckCategoryListResponse {
   ChuckCategoryListResponse(
-    this.chuckCategoryList,
+    this.categories,
   );
 
   factory ChuckCategoryListResponse.fromJson(Map<String, dynamic> json) =>
       _$ChuckCategoryListResponseFromJson(json);
 
-  final List<ChuckCategoryResponse> chuckCategoryList;
+  final List<ChuckCategoryResponse> categories;
 
   Map<String, dynamic> toJson() => _$ChuckCategoryListResponseToJson(this);
 }

@@ -5,7 +5,7 @@ import '../remote/model/joke/chuck_joke_response.dart';
 
 extension ChuckCategoryListResponseToChuckCategoryModel
     on ChuckCategoryListResponse {
-  List<ChuckCategoryModel> toChuckCategoryModel() => chuckCategoryList
+  List<ChuckCategoryModel> toChuckCategoryModel() => categories
       .map(
         (item) => ChuckCategoryModel(item.title ?? ' - '),
       )

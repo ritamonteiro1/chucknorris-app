@@ -9,7 +9,7 @@ part of 'chuck_category_list_response.dart';
 ChuckCategoryListResponse _$ChuckCategoryListResponseFromJson(
         Map<String, dynamic> json) =>
     ChuckCategoryListResponse(
-      (json['chuck_category_list'] as List<dynamic>)
+      (json['categories'] as List<dynamic>)
           .map((e) => ChuckCategoryResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -17,5 +17,5 @@ ChuckCategoryListResponse _$ChuckCategoryListResponseFromJson(
 Map<String, dynamic> _$ChuckCategoryListResponseToJson(
         ChuckCategoryListResponse instance) =>
     <String, dynamic>{
-      'chuck_category_list': instance.chuckCategoryList,
+      'categories': instance.categories,
     };

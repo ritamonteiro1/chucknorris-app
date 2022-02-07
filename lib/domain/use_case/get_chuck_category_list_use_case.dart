@@ -1,6 +1,6 @@
 import '../model/category/chuck_category_model.dart';
 
-mixin ChuckRepository {
+mixin GetChuckCategoryListUseCase {
   Future<List<ChuckCategoryModel>> getChuckCategoryList(
       {required String category});
 }
