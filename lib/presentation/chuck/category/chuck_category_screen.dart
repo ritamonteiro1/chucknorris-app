@@ -9,5 +9,8 @@ class ChuckCategoryScreen extends StatefulWidget {
 
 class _ChuckCategoryScreenState extends State<ChuckCategoryScreen> {
   @override
-  Widget build(BuildContext context) => Scaffold();
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(),
+        body: Container(),
+      );
 }
