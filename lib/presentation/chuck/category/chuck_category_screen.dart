@@ -14,6 +14,7 @@ import '../../../domain/repository/chuck_repository_impl.dart';
 import '../../../domain/use_case/get_chuck_category_list_use_case.dart';
 import '../../../domain/use_case/get_chuck_category_list_use_case_impl.dart';
 import '../../../generated/l10n.dart';
+import 'chuck_category_list_error_widget.dart';
 import 'chuck_category_list_widget.dart';
 import 'chuck_category_state.dart';
 
@@ -76,48 +77,14 @@ class _ChuckCategoryScreenState extends State<ChuckCategoryScreen> {
           } else if (chuckCategoryState is ErrorChuckCategoryState) {
             if (chuckCategoryState.exception
                 is GenericErrorStatusCodeException) {
-              return Center(
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(S.of(context).messageGenericErrorText),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.red),
-                        ),
-                        onPressed: () =>
-                            chuckCategoryStore.getChuckCategoryList(),
-                        child: Text(S.of(context).messageTryAgain)),
-                  ],
-                ),
+              return ChuckCategoryListErrorWidget(
+                onPressed: () => chuckCategoryStore.getChuckCategoryList(),
+                message: S.of(context).messageGenericErrorText,
               );
             } else {
-              return Center(
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(S.of(context).messageConnectionFailText),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.red),
-                        ),
-                        onPressed: () =>
-                            chuckCategoryStore.getChuckCategoryList(),
-                        child: Text(S.of(context).messageTryAgain)),
-                  ],
-                ),
+              return ChuckCategoryListErrorWidget(
+                onPressed: () => chuckCategoryStore.getChuckCategoryList(),
+                message: S.of(context).messageConnectionFailText,
               );
             }
           } else {
