@@ -5,9 +5,7 @@ class LoadingChuckWidget extends StatelessWidget {
   const LoadingChuckWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => const Center(
-        child: CircularProgressIndicator(
-          color: ConstantColor.primaryColor,
-        ),
+  Widget build(BuildContext context) => const CircularProgressIndicator(
+        color: ConstantColor.primaryColor,
       );
 }

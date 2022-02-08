@@ -69,9 +69,9 @@ class _ChuckCategoryJokeScreenState extends State<ChuckCategoryJokeScreen> {
           ),
         ),
         body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(6),
-            child: Center(
+          child: Center(
+            child: Container(
+              padding: const EdgeInsets.all(6),
               child: Column(
                 children: [
                   const SizedBox(

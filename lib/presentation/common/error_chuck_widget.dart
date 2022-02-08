@@ -12,23 +12,21 @@ class ErrorChuckWidget extends StatelessWidget {
   final Function() onPressed;
 
   @override
-  Widget build(BuildContext context) => Center(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            Text(message),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red),
-                ),
-                onPressed: onPressed,
-                child: Text(S.of(context).messageTryAgain)),
-          ],
-        ),
+  Widget build(BuildContext context) => Column(
+        children: [
+          const SizedBox(
+            height: 20,
+          ),
+          Text(message),
+          const SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.red),
+              ),
+              onPressed: onPressed,
+              child: Text(S.of(context).messageTryAgain)),
+        ],
       );
 }

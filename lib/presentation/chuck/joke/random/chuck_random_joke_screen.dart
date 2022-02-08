@@ -60,7 +60,7 @@ class _ChuckRandomJokeScreenState extends State<ChuckRandomJokeScreen> {
             ],
           ),
         ),
-        body: SingleChildScrollView(
+        body: Center(
           child: Container(
             padding: const EdgeInsets.all(6),
             child: Observer(

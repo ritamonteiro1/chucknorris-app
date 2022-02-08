@@ -61,31 +61,33 @@ class _ChuckCategoryScreenState extends State<ChuckCategoryScreen> {
           ],
         ),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(6),
-        child: Observer(builder: (context) {
-          final chuckCategoryState = chuckCategoryStore.chuckCategoryState;
-          if (chuckCategoryState is LoadingChuckCategoryState) {
-            return const LoadingChuckWidget();
-          } else if (chuckCategoryState is SuccessChuckCategoryState) {
-            return ChuckCategoryListWidget(
-                chuckCategoryList: chuckCategoryState.categoryList);
-          } else if (chuckCategoryState is ErrorChuckCategoryState) {
-            if (chuckCategoryState.exception
-                is GenericErrorStatusCodeException) {
-              return ErrorChuckWidget(
-                onPressed: () => chuckCategoryStore.getChuckCategoryList(),
-                message: S.of(context).messageGenericErrorText,
-              );
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(6),
+          child: Observer(builder: (context) {
+            final chuckCategoryState = chuckCategoryStore.chuckCategoryState;
+            if (chuckCategoryState is LoadingChuckCategoryState) {
+              return const LoadingChuckWidget();
+            } else if (chuckCategoryState is SuccessChuckCategoryState) {
+              return ChuckCategoryListWidget(
+                  chuckCategoryList: chuckCategoryState.categoryList);
+            } else if (chuckCategoryState is ErrorChuckCategoryState) {
+              if (chuckCategoryState.exception
+                  is GenericErrorStatusCodeException) {
+                return ErrorChuckWidget(
+                  onPressed: () => chuckCategoryStore.getChuckCategoryList(),
+                  message: S.of(context).messageGenericErrorText,
+                );
+              } else {
+                return ErrorChuckWidget(
+                  onPressed: () => chuckCategoryStore.getChuckCategoryList(),
+                  message: S.of(context).messageConnectionFailText,
+                );
+              }
             } else {
-              return ErrorChuckWidget(
-                onPressed: () => chuckCategoryStore.getChuckCategoryList(),
-                message: S.of(context).messageConnectionFailText,
-              );
+              throw UnknownStateTypeException();
             }
-          } else {
-            throw UnknownStateTypeException();
-          }
-        }),
+          }),
+        ),
       ));
 }
