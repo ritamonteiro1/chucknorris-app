@@ -6,10 +6,10 @@ class LoadingChuckRandomJokeState implements ChuckRandomJokeState {}
 
 class SuccessChuckRandomJokeState implements ChuckRandomJokeState {
   SuccessChuckRandomJokeState(
-    this.chuckJokeModel,
+    this.joke,
   );
 
-  final ChuckJokeModel chuckJokeModel;
+  final ChuckJokeModel joke;
 }
 
 class ErrorChuckRandomJokeState implements ChuckRandomJokeState {
