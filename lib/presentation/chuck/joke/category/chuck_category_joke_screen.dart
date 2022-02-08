@@ -1,16 +1,15 @@
-import '../../../../constants/constant_images.dart';
-import '../../../../generated/l10n.dart';
-
-import '../../../../data/remote/data_source/chuck_remote_data_source_impl.dart';
-import '../../../../domain/repository/chuck_repository_impl.dart';
-import '../../../../domain/use_case/get_chuck_category_joke_use_case_impl.dart';
-
-import '../../../../data/remote/data_source/chuck_remote_data_source.dart';
-import '../../../../domain/repository/chuck_repository.dart';
-import '../../../../domain/use_case/get_chuck_category_joke_use_case.dart';
-import 'chuck_category_joke_store.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../constants/constant_images.dart';
+import '../../../../data/remote/data_source/chuck_remote_data_source.dart';
+import '../../../../data/remote/data_source/chuck_remote_data_source_impl.dart';
+import '../../../../domain/repository/chuck_repository.dart';
+import '../../../../domain/repository/chuck_repository_impl.dart';
+import '../../../../domain/use_case/get_chuck_category_joke_use_case.dart';
+import '../../../../domain/use_case/get_chuck_category_joke_use_case_impl.dart';
+import '../../../../generated/l10n.dart';
+import 'chuck_category_joke_store.dart';
 
 class ChuckCategoryJokeScreen extends StatefulWidget {
   const ChuckCategoryJokeScreen({Key? key}) : super(key: key);
