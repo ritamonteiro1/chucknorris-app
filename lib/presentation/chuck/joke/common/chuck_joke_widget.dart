@@ -22,6 +22,7 @@ class ChuckJokeWidget extends StatelessWidget {
             ),
             Text(
               chuckJokeModel.joke,
+              textAlign: TextAlign.center,
             ),
             const SizedBox(
               height: 10,
