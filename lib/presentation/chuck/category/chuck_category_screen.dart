@@ -50,8 +50,10 @@ class _ChuckCategoryScreenState extends State<ChuckCategoryScreen> {
                 ConstantImages.logoIoasys,
               ),
             ),
-            Text(
-              S.of(context).chuckCategoryScreenAppBarTitle,
+            Expanded(
+              child: Text(
+                S.of(context).chuckCategoryScreenAppBarTitle,
+              ),
             ),
           ],
         ),
@@ -73,9 +75,12 @@ class _ChuckCategoryScreenState extends State<ChuckCategoryScreen> {
               return Center(
                 child: Column(
                   children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Text(S.of(context).messageGenericErrorText),
                     const SizedBox(
-                      height: 6,
+                      height: 20,
                     ),
                     ElevatedButton(
                         style: ButtonStyle(
@@ -92,9 +97,12 @@ class _ChuckCategoryScreenState extends State<ChuckCategoryScreen> {
               return Center(
                 child: Column(
                   children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Text(S.of(context).messageConnectionFailText),
                     const SizedBox(
-                      height: 6,
+                      height: 20,
                     ),
                     ElevatedButton(
                         style: ButtonStyle(

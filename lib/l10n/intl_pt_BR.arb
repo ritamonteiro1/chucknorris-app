@@ -1,9 +1,9 @@
 {
   "@@ locale": "pt_BR",
-  "chuckCategoryScreenAppBarTitle": "Chuck Norris - Categorias",
+  "chuckCategoryScreenAppBarTitle": "Chuck Norris Categorias",
   "chuckCategoryJokeScreenGenerateRandomJokeText": "Gerar piada aleatória",
-  "chuckCategoryJokeScreenAppBarTitle": "Chuck Norris - Piada",
-  "chuckRandomJokeScreenAppBarTitle": "Chuck Norris - Piada aleatória",
+  "chuckCategoryJokeScreenAppBarTitle": "Piada",
+  "chuckRandomJokeScreenAppBarTitle": "Piada aleatória",
   "messageGenericErrorText": "Ocorreuu um erro",
   "messageConnectionFailText": "Falha na conexão",
   "messageTryAgain": "Tente novamente"

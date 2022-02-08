@@ -50,10 +50,10 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Chuck Norris - Categories`
+  /// `Chuck Norris Categories`
   String get chuckCategoryScreenAppBarTitle {
     return Intl.message(
-      'Chuck Norris - Categories',
+      'Chuck Norris Categories',
       name: 'chuckCategoryScreenAppBarTitle',
       desc: '',
       args: [],
@@ -70,20 +70,20 @@ class S {
     );
   }
 
-  /// `Chuck Norris - Joke`
+  /// `Joke`
   String get chuckCategoryJokeScreenAppBarTitle {
     return Intl.message(
-      'Chuck Norris - Joke',
+      'Joke',
       name: 'chuckCategoryJokeScreenAppBarTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Chuck Norris - Random Joke`
+  /// `Random Joke`
   String get chuckRandomJokeScreenAppBarTitle {
     return Intl.message(
-      'Chuck Norris - Random Joke',
+      'Random Joke',
       name: 'chuckRandomJokeScreenAppBarTitle',
       desc: '',
       args: [],

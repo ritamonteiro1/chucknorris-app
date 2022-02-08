@@ -25,6 +25,7 @@ abstract class _ChuckCategoryStore with Store {
 
   @action
   Future<void> getChuckCategoryList() async {
+    chuckCategoryState = ChuckCategoryState.loading;
     try {
       final chuckCategoryList =
           await getChuckCategoryListUseCase.getChuckCategoryList();

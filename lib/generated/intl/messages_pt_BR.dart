@@ -23,14 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "chuckCategoryJokeScreenAppBarTitle":
-            MessageLookupByLibrary.simpleMessage("Chuck Norris - Piada"),
+            MessageLookupByLibrary.simpleMessage("Piada"),
         "chuckCategoryJokeScreenGenerateRandomJokeText":
             MessageLookupByLibrary.simpleMessage("Gerar piada aleatória"),
         "chuckCategoryScreenAppBarTitle":
-            MessageLookupByLibrary.simpleMessage("Chuck Norris - Categorias"),
+            MessageLookupByLibrary.simpleMessage("Chuck Norris Categorias"),
         "chuckRandomJokeScreenAppBarTitle":
-            MessageLookupByLibrary.simpleMessage(
-                "Chuck Norris - Piada aleatória"),
+            MessageLookupByLibrary.simpleMessage("Piada aleatória"),
         "messageConnectionFailText":
             MessageLookupByLibrary.simpleMessage("Falha na conexão"),
         "messageGenericErrorText":

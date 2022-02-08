@@ -1,6 +1,13 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constant_images.dart';
+import '../../../data/remote/data_source/chuck_remote_data_source.dart';
+import '../../../data/remote/data_source/chuck_remote_data_source_impl.dart';
+import '../../../domain/repository/chuck_repository.dart';
+import '../../../domain/repository/chuck_repository_impl.dart';
+import '../../../domain/use_case/get_chuck_category_joke_use_case.dart';
+import '../../../domain/use_case/get_chuck_category_joke_use_case_impl.dart';
 import '../../../generated/l10n.dart';
 
 class ChuckCategoryJokeScreen extends StatefulWidget {
@@ -12,6 +19,19 @@ class ChuckCategoryJokeScreen extends StatefulWidget {
 }
 
 class _ChuckCategoryJokeScreenState extends State<ChuckCategoryJokeScreen> {
+  late ChuckRemoteDataSource chuckRemoteDataSource;
+  late ChuckRepository chuckRepository;
+  late GetChuckCategoryJokeUseCase getChuckCategoryJokeUseCase;
+
+  @override
+  void initState() {
+    super.initState();
+    chuckRemoteDataSource = ChuckRemoteDataSourceImpl(Dio());
+    chuckRepository = ChuckRepositoryImpl(chuckRemoteDataSource);
+    getChuckCategoryJokeUseCase =
+        GetChuckCategoryJokeUseCaseImpl(chuckRepository);
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -23,8 +43,10 @@ class _ChuckCategoryJokeScreenState extends State<ChuckCategoryJokeScreen> {
                   ConstantImages.logoIoasys,
                 ),
               ),
-              Text(
-                S.of(context).chuckCategoryJokeScreenAppBarTitle,
+              Expanded(
+                child: Text(
+                  S.of(context).chuckCategoryJokeScreenAppBarTitle,
+                ),
               ),
             ],
           ),

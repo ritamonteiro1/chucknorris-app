@@ -21,8 +21,10 @@ class _ChuckRandomJokeScreenState extends State<ChuckRandomJokeScreen> {
                   ConstantImages.logoIoasys,
                 ),
               ),
-              Text(
-                S.of(context).chuckRandomJokeScreenAppBarTitle,
+              Expanded(
+                child: Text(
+                  S.of(context).chuckRandomJokeScreenAppBarTitle,
+                ),
               ),
             ],
           ),
