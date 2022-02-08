@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../generated/l10n.dart';
+import '../../generated/l10n.dart';
 
-class ChuckCategoryListErrorWidget extends StatelessWidget {
-  const ChuckCategoryListErrorWidget({
+class ErrorChuckWidget extends StatelessWidget {
+  const ErrorChuckWidget({
     required this.message,
     required this.onPressed,
     Key? key,

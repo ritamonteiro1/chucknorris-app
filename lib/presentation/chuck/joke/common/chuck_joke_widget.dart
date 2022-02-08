@@ -23,6 +23,9 @@ class ChuckJokeWidget extends StatelessWidget {
             Text(
               chuckJokeModel.joke,
             ),
+            const SizedBox(
+              height: 10,
+            ),
           ],
         ),
       );
