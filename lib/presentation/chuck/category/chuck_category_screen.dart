@@ -1,3 +1,5 @@
+import 'package:chuck_norris_app/domain/exception/generic_error_status_code_exception.dart';
+import 'package:chuck_norris_app/domain/exception/unknown_state_type_exception.dart';
 import 'package:chuck_norris_app/presentation/chuck/category/chuck_category_store.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -61,17 +63,19 @@ class _ChuckCategoryScreenState extends State<ChuckCategoryScreen> {
       body: Container(
         padding: const EdgeInsets.all(4),
         child: Observer(builder: (context) {
-          switch (chuckCategoryStore.chuckCategoryState) {
-            case ChuckCategoryState.loading:
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: ConstantColor.primaryColor,
-                ),
-              );
-            case ChuckCategoryState.success:
-              return ChuckCategoryListWidget(
-                  chuckCategoryList: chuckCategoryStore.categoryList);
-            case ChuckCategoryState.genericError:
+          final chuckCategoryState = chuckCategoryStore.chuckCategoryState;
+          if (chuckCategoryState is LoadingChuckCategoryState) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: ConstantColor.primaryColor,
+              ),
+            );
+          } else if (chuckCategoryState is SuccessChuckCategoryState) {
+            return ChuckCategoryListWidget(
+                chuckCategoryList: chuckCategoryState.categoryList);
+          } else if (chuckCategoryState is ErrorChuckCategoryState) {
+            if (chuckCategoryState.exception
+                is GenericErrorStatusCodeException) {
               return Center(
                 child: Column(
                   children: [
@@ -93,7 +97,7 @@ class _ChuckCategoryScreenState extends State<ChuckCategoryScreen> {
                   ],
                 ),
               );
-            case ChuckCategoryState.networkError:
+            } else {
               return Center(
                 child: Column(
                   children: [
@@ -115,6 +119,9 @@ class _ChuckCategoryScreenState extends State<ChuckCategoryScreen> {
                   ],
                 ),
               );
+            }
+          } else {
+            throw UnknownStateTypeException();
           }
         }),
       ));

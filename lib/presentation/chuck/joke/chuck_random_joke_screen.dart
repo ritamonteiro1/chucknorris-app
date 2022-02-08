@@ -4,11 +4,12 @@ import 'package:chuck_norris_app/domain/repository/chuck_repository.dart';
 import 'package:chuck_norris_app/domain/repository/chuck_repository_impl.dart';
 import 'package:chuck_norris_app/domain/use_case/get_chuck_random_joke_use_case.dart';
 import 'package:chuck_norris_app/domain/use_case/get_chuck_random_joke_use_case_impl.dart';
+import 'package:chuck_norris_app/presentation/chuck/joke/chuck_random_joke_store.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 import '../../../constants/constant_images.dart';
 import '../../../generated/l10n.dart';
-import 'package:flutter/material.dart';
 
 class ChuckRandomJokeScreen extends StatefulWidget {
   const ChuckRandomJokeScreen({Key? key}) : super(key: key);
@@ -21,6 +22,7 @@ class _ChuckRandomJokeScreenState extends State<ChuckRandomJokeScreen> {
   late ChuckRemoteDataSource chuckRemoteDataSource;
   late ChuckRepository chuckRepository;
   late GetChuckRandomJokeUseCase getChuckRandomJokeUseCase;
+  late ChuckRandomJokeStore chuckRandomJokeStore;
 
   @override
   void initState() {
@@ -28,6 +30,7 @@ class _ChuckRandomJokeScreenState extends State<ChuckRandomJokeScreen> {
     chuckRemoteDataSource = ChuckRemoteDataSourceImpl(Dio());
     chuckRepository = ChuckRepositoryImpl(chuckRemoteDataSource);
     getChuckRandomJokeUseCase = GetChuckRandomJokeUseCaseImpl(chuckRepository);
+    chuckRandomJokeStore = ChuckRandomJokeStore(getChuckRandomJokeUseCase);
   }
 
   @override

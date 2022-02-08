@@ -1,7 +1,5 @@
 import 'package:mobx/mobx.dart';
 
-import '../../../domain/exception/generic_error_status_code_exception.dart';
-import '../../../domain/model/category/chuck_category_model.dart';
 import '../../../domain/use_case/get_chuck_category_list_use_case.dart';
 import 'chuck_category_state.dart';
 
@@ -17,24 +15,17 @@ abstract class _ChuckCategoryStore with Store {
   final GetChuckCategoryListUseCase getChuckCategoryListUseCase;
 
   @observable
-  ObservableList<ChuckCategoryModel> categoryList =
-      ObservableList<ChuckCategoryModel>.of([]);
-
-  @observable
-  ChuckCategoryState chuckCategoryState = ChuckCategoryState.loading;
+  ChuckCategoryState chuckCategoryState = LoadingChuckCategoryState();
 
   @action
   Future<void> getChuckCategoryList() async {
-    chuckCategoryState = ChuckCategoryState.loading;
+    chuckCategoryState = LoadingChuckCategoryState();
     try {
       final chuckCategoryList =
           await getChuckCategoryListUseCase.getChuckCategoryList();
-      chuckCategoryState = ChuckCategoryState.success;
-      categoryList = chuckCategoryList.asObservable();
-    } on GenericErrorStatusCodeException {
-      chuckCategoryState = ChuckCategoryState.genericError;
-    } on Exception {
-      chuckCategoryState = ChuckCategoryState.networkError;
+      chuckCategoryState = SuccessChuckCategoryState(chuckCategoryList);
+    } on Exception catch (e) {
+      chuckCategoryState = ErrorChuckCategoryState(e);
     }
   }
 }
