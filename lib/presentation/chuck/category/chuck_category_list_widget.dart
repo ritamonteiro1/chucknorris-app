@@ -1,4 +1,5 @@
-import 'package:chuck_norris_app/domain/model/category/chuck_category_model.dart';
+import '../../../domain/model/category/chuck_category_model.dart';
+import '../joke/category/chuck_category_joke_screen.dart';
 import 'package:flutter/material.dart';
 
 class ChuckCategoryListWidget extends StatelessWidget {
@@ -14,7 +15,12 @@ class ChuckCategoryListWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           final chuckCategory = chuckCategoryList[index];
           return ListTile(
-            onTap: () => Navigator.of(context).pushNamed('/category-joke'),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) =>
+                    ChuckCategoryJokeScreen(chuckCategory: chuckCategory.title),
+              ),
+            ),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
             title: Text(chuckCategory.title),
           );

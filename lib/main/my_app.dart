@@ -1,4 +1,3 @@
-import '../presentation/chuck/joke/category/chuck_category_joke_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -6,7 +5,6 @@ import '../constants/constant_colors.dart';
 import '../constants/constant_fonts.dart';
 import '../generated/l10n.dart';
 import '../presentation/chuck/category/chuck_category_screen.dart';
-import '../presentation/chuck/joke/random/chuck_random_joke_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -29,12 +27,7 @@ class MyApp extends StatelessWidget {
             iconColor: ConstantColor.primaryColor,
           ),
         ),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => const ChuckCategoryScreen(),
-          '/category-joke': (context) => const ChuckCategoryJokeScreen(),
-          '/random-joke': (context) => const ChuckRandomJokeScreen(),
-        },
+        home: const ChuckCategoryScreen(),
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,

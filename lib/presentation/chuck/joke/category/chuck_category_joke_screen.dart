@@ -9,10 +9,15 @@ import '../../../../domain/repository/chuck_repository_impl.dart';
 import '../../../../domain/use_case/get_chuck_category_joke_use_case.dart';
 import '../../../../domain/use_case/get_chuck_category_joke_use_case_impl.dart';
 import '../../../../generated/l10n.dart';
+import '../random/chuck_random_joke_screen.dart';
 import 'chuck_category_joke_store.dart';
 
 class ChuckCategoryJokeScreen extends StatefulWidget {
-  const ChuckCategoryJokeScreen({Key? key}) : super(key: key);
+  const ChuckCategoryJokeScreen({
+    required this.chuckCategory,
+    Key? key,
+  }) : super(key: key);
+  final String chuckCategory;
 
   @override
   _ChuckCategoryJokeScreenState createState() =>
@@ -34,6 +39,7 @@ class _ChuckCategoryJokeScreenState extends State<ChuckCategoryJokeScreen> {
         GetChuckCategoryJokeUseCaseImpl(chuckRepository);
     chuckCategoryJokeStore =
         ChuckCategoryJokeStore(getChuckCategoryJokeUseCase);
+    chuckCategoryJokeStore.getChuckCategoryJoke(category: widget.chuckCategory);
   }
 
   @override
@@ -55,21 +61,36 @@ class _ChuckCategoryJokeScreenState extends State<ChuckCategoryJokeScreen> {
             ],
           ),
         ),
-        body: GestureDetector(
-          onTap: () => Navigator.of(context).pushNamed('/random-joke'),
-          child: Card(
-            elevation: 6,
-            child: Padding(
-              padding: const EdgeInsets.all(4),
-              child: Text(
-                S.of(context).chuckCategoryJokeScreenGenerateRandomJokeText,
-                style: const TextStyle(
-                  color: Colors.grey,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 16,
+              ),
+              GestureDetector(
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const ChuckRandomJokeScreen(),
+                  ),
+                ),
+                child: Card(
+                  elevation: 6,
+                  child: Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: Text(
+                      S
+                          .of(context)
+                          .chuckCategoryJokeScreenGenerateRandomJokeText,
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
         ),
       );

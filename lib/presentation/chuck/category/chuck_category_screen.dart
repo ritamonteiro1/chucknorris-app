@@ -1,6 +1,6 @@
-import 'package:chuck_norris_app/domain/exception/generic_error_status_code_exception.dart';
-import 'package:chuck_norris_app/domain/exception/unknown_state_type_exception.dart';
-import 'package:chuck_norris_app/presentation/chuck/category/chuck_category_store.dart';
+import '../../../domain/exception/generic_error_status_code_exception.dart';
+import '../../../domain/exception/unknown_state_type_exception.dart';
+import 'chuck_category_store.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
