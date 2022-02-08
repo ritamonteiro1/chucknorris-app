@@ -61,10 +61,10 @@ class S {
   }
 
   /// `Generate random joke`
-  String get chuckCategoryScreenGenerateRandomJokeText {
+  String get chuckCategoryJokeScreenGenerateRandomJokeText {
     return Intl.message(
       'Generate random joke',
-      name: 'chuckCategoryScreenGenerateRandomJokeText',
+      name: 'chuckCategoryJokeScreenGenerateRandomJokeText',
       desc: '',
       args: [],
     );
@@ -85,6 +85,36 @@ class S {
     return Intl.message(
       'Chuck Norris - Random Joke',
       name: 'chuckRandomJokeScreenAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Occurred error`
+  String get messageGenericErrorText {
+    return Intl.message(
+      'Occurred error',
+      name: 'messageGenericErrorText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection fail`
+  String get messageConnectionFailText {
+    return Intl.message(
+      'Connection fail',
+      name: 'messageConnectionFailText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try again`
+  String get messageTryAgain {
+    return Intl.message(
+      'Try again',
+      name: 'messageTryAgain',
       desc: '',
       args: [],
     );

@@ -1,7 +1,19 @@
-import '../../../generated/l10n.dart';
+import 'package:chuck_norris_app/presentation/chuck/category/chuck_category_store.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
+import '../../../constants/constant_colors.dart';
 import '../../../constants/constant_images.dart';
+import '../../../data/remote/data_source/chuck_remote_data_source.dart';
+import '../../../data/remote/data_source/chuck_remote_data_source_impl.dart';
+import '../../../domain/repository/chuck_repository.dart';
+import '../../../domain/repository/chuck_repository_impl.dart';
+import '../../../domain/use_case/get_chuck_category_list_use_case.dart';
+import '../../../domain/use_case/get_chuck_category_list_use_case_impl.dart';
+import '../../../generated/l10n.dart';
+import 'chuck_category_list_widget.dart';
+import 'chuck_category_state.dart';
 
 class ChuckCategoryScreen extends StatefulWidget {
   const ChuckCategoryScreen({Key? key}) : super(key: key);
@@ -11,50 +23,91 @@ class ChuckCategoryScreen extends StatefulWidget {
 }
 
 class _ChuckCategoryScreenState extends State<ChuckCategoryScreen> {
+  late ChuckRemoteDataSource chuckRemoteDataSource;
+  late ChuckRepository chuckRepository;
+  late GetChuckCategoryListUseCase getChuckCategoryListUseCase;
+  late ChuckCategoryStore chuckCategoryStore;
+
+  @override
+  void initState() {
+    super.initState();
+    chuckRemoteDataSource = ChuckRemoteDataSourceImpl(Dio());
+    chuckRepository = ChuckRepositoryImpl(chuckRemoteDataSource);
+    getChuckCategoryListUseCase =
+        GetChuckCategoryListUseCaseImpl(chuckRepository);
+    chuckCategoryStore = ChuckCategoryStore(getChuckCategoryListUseCase);
+    chuckCategoryStore.getChuckCategoryList();
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: Image.asset(
-                  ConstantImages.logoIoasys,
-                ),
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Image.asset(
+                ConstantImages.logoIoasys,
               ),
-              Text(
-                S.of(context).chuckCategoryScreenAppBarTitle,
-              ),
-            ],
-          ),
+            ),
+            Text(
+              S.of(context).chuckCategoryScreenAppBarTitle,
+            ),
+          ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).pushNamed('/random-joke'),
-                child: Card(
-                  elevation: 6,
-                  child: Padding(
-                    padding: const EdgeInsets.all(4),
-                    child: Text(
-                      S.of(context).chuckCategoryScreenGenerateRandomJokeText,
-                      style: const TextStyle(
-                        color: Colors.grey,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(4),
+        child: Observer(builder: (context) {
+          switch (chuckCategoryStore.chuckCategoryState) {
+            case ChuckCategoryState.loading:
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: ConstantColor.primaryColor,
+                ),
+              );
+            case ChuckCategoryState.success:
+              return ChuckCategoryListWidget(
+                  chuckCategoryList: chuckCategoryStore.categoryList);
+            case ChuckCategoryState.genericError:
+              return Center(
+                child: Column(
+                  children: [
+                    Text(S.of(context).messageGenericErrorText),
+                    const SizedBox(
+                      height: 6,
                     ),
-                  ),
+                    ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.red),
+                        ),
+                        onPressed: () =>
+                            chuckCategoryStore.getChuckCategoryList(),
+                        child: Text(S.of(context).messageTryAgain)),
+                  ],
                 ),
-              ),
-            ],
-          ),
-        ),
-      );
+              );
+            case ChuckCategoryState.networkError:
+              return Center(
+                child: Column(
+                  children: [
+                    Text(S.of(context).messageConnectionFailText),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.red),
+                        ),
+                        onPressed: () =>
+                            chuckCategoryStore.getChuckCategoryList(),
+                        child: Text(S.of(context).messageTryAgain)),
+                  ],
+                ),
+              );
+          }
+        }),
+      ));
 }

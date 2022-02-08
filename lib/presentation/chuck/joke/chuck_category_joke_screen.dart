@@ -29,6 +29,22 @@ class _ChuckCategoryJokeScreenState extends State<ChuckCategoryJokeScreen> {
             ],
           ),
         ),
-        body: Container(),
+        body: GestureDetector(
+          onTap: () => Navigator.of(context).pushNamed('/random-joke'),
+          child: Card(
+            elevation: 6,
+            child: Padding(
+              padding: const EdgeInsets.all(4),
+              child: Text(
+                S.of(context).chuckCategoryJokeScreenGenerateRandomJokeText,
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+        ),
       );
 }

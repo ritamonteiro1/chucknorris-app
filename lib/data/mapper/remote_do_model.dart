@@ -1,15 +1,14 @@
 import '../../domain/model/category/chuck_category_model.dart';
 import '../../domain/model/joke/chuck_joke_model.dart';
-import '../remote/model/category/chuck_category_list_response.dart';
+import '../remote/model/category/chuck_category_response.dart';
 import '../remote/model/joke/chuck_joke_response.dart';
 
-extension ChuckCategoryListResponseToChuckCategoryModel
-    on ChuckCategoryListResponse {
-  List<ChuckCategoryModel> toChuckCategoryModel() => categories
-      .map(
-        (item) => ChuckCategoryModel(item.title ?? ' - '),
-      )
-      .toList();
+extension ChuckCategoryListToChuckCategoryModelon
+    on List<ChuckCategoryResponse> {
+  List<ChuckCategoryModel> toChuckCategoryModel() =>
+      map((item) => ChuckCategoryModel(
+            item.title ?? ' - ',
+          )).toList();
 }
 
 extension ChuckJokeResponseToChuckJoseModel on ChuckJokeResponse {
