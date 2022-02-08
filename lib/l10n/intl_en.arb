@@ -1,4 +1,7 @@
 {
   "@@ locale": "en",
-  "chuckCategoryScreenAppBarTitle": "Chuck Norris - Categories"
+  "chuckCategoryScreenAppBarTitle": "Chuck Norris - Categories",
+  "chuckCategoryScreenGenerateRandomJokeText": "Generate random joke",
+  "chuckCategoryJokeScreenAppBarTitle": "Chuck Norris - Joke",
+  "chuckRandomJokeScreenAppBarTitle": "Chuck Norris - Random Joke"
 }

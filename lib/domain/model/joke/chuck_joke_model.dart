@@ -3,11 +3,11 @@ class ChuckJokeModel {
     this.id,
     this.iconUrl,
     this.url,
-    this.value,
+    this.joke,
   );
 
   final String id;
   final String iconUrl;
   final String url;
-  final String value;
+  final String joke;
 }

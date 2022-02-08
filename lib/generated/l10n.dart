@@ -59,6 +59,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Generate random joke`
+  String get chuckCategoryScreenGenerateRandomJokeText {
+    return Intl.message(
+      'Generate random joke',
+      name: 'chuckCategoryScreenGenerateRandomJokeText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chuck Norris - Joke`
+  String get chuckCategoryJokeScreenAppBarTitle {
+    return Intl.message(
+      'Chuck Norris - Joke',
+      name: 'chuckCategoryJokeScreenAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chuck Norris - Random Joke`
+  String get chuckRandomJokeScreenAppBarTitle {
+    return Intl.message(
+      'Chuck Norris - Random Joke',
+      name: 'chuckRandomJokeScreenAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

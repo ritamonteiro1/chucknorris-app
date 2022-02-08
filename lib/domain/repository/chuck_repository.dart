@@ -6,4 +6,6 @@ abstract class ChuckRepository {
   Future<List<ChuckCategoryModel>> getChuckCategoryList();
 
   Future<ChuckJokeModel> getChuckJoke({required String chuckCategory});
+
+  Future<ChuckJokeModel> getChuckRandomJoke();
 }

@@ -1,4 +1,7 @@
 {
   "@@ locale": "pt_BR",
-  "chuckCategoryScreenAppBarTitle": "Chuck Norris - Categorias"
+  "chuckCategoryScreenAppBarTitle": "Chuck Norris - Categorias",
+  "chuckCategoryScreenGenerateRandomJokeText": "Gerar piada aleatória",
+  "chuckCategoryJokeScreenAppBarTitle": "Chuck Norris - Piada",
+  "chuckRandomJokeScreenAppBarTitle": "Chuck Norris - Piada aleatória"
 }

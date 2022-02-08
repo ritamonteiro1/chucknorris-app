@@ -14,7 +14,7 @@ class ChuckCategoryListWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           final chuckCategory = chuckCategoryList[index];
           return ListTile(
-            onTap: () {},
+            onTap: () => Navigator.of(context).pushNamed('/category-joke'),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
             title: Text(chuckCategory.title),
           );

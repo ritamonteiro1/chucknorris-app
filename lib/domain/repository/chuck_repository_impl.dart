@@ -17,7 +17,10 @@ class ChuckRepositoryImpl implements ChuckRepository {
       chuckRemoteDataSource.getChuckCategoryList();
 
   @override
-  Future<ChuckJokeModel> getChuckJoke({required String chuckCategory}) {
-    throw UnimplementedError();
-  }
+  Future<ChuckJokeModel> getChuckJoke({required String chuckCategory}) =>
+      chuckRemoteDataSource.getChuckJoke(chuckCategory: chuckCategory);
+
+  @override
+  Future<ChuckJokeModel> getChuckRandomJoke() =>
+      chuckRemoteDataSource.getChuckRandomJoke();
 }
