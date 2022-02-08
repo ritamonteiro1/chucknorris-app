@@ -17,7 +17,7 @@ ChuckJokeResponse _$ChuckJokeResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$ChuckJokeResponseToJson(ChuckJokeResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'icon_url': instance.icon_url,
+      'icon_url': instance.iconUrl,
       'url': instance.url,
-      'value': instance.value,
+      'value': instance.joke,
     };

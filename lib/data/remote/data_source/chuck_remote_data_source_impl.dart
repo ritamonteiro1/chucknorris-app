@@ -1,4 +1,6 @@
-import 'package:chuck_norris_app/data/remote/model/category/chuck_category_list_response.dart';
+import '../model/category/chuck_category_list_response.dart';
+import '../model/joke/chuck_joke_response.dart';
+import '../../../domain/model/joke/chuck_joke_model.dart';
 import 'package:dio/dio.dart';
 
 import '../../../domain/exception/generic_error_status_code_exception.dart';
@@ -23,6 +25,24 @@ class ChuckRemoteDataSourceImpl implements ChuckRemoteDataSource {
           ChuckCategoryListResponse.fromJson(response.data)
               .toChuckCategoryModel();
       return chuckCategoryList;
+    } on DioError catch (dioError, _) {
+      if (dioError.type == DioErrorType.response) {
+        throw GenericErrorStatusCodeException();
+      } else {
+        throw Exception();
+      }
+    }
+  }
+
+  @override
+  Future<ChuckJokeModel> getChuckJoke({required String chuckCategory}) async {
+    _dio.interceptors.add(LogInterceptor(responseBody: true));
+    try {
+      final response =
+          await _dio.get('${_baseUrl}jokes/random?category=$chuckCategory');
+      final chuckJoke =
+          ChuckJokeResponse.fromJson(response.data).toChuckJokeModel();
+      return chuckJoke;
     } on DioError catch (dioError, _) {
       if (dioError.type == DioErrorType.response) {
         throw GenericErrorStatusCodeException();

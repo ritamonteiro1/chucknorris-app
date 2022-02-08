@@ -15,8 +15,8 @@ extension ChuckCategoryListResponseToChuckCategoryModel
 extension ChuckJokeResponseToChuckJoseModel on ChuckJokeResponse {
   ChuckJokeModel toChuckJokeModel() => ChuckJokeModel(
         id ?? ' - ',
-        icon_url ?? ' - ',
+        iconUrl ?? ' - ',
         url ?? ' - ',
-        value ?? ' - ',
+        joke ?? ' - ',
       );
 }

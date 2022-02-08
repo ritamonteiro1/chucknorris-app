@@ -1,3 +1,5 @@
+import 'package:chuck_norris_app/domain/model/joke/chuck_joke_model.dart';
+
 import '../../data/remote/data_source/chuck_remote_data_source.dart';
 import '../model/category/chuck_category_model.dart';
 
@@ -13,4 +15,9 @@ class ChuckRepositoryImpl implements ChuckRepository {
   @override
   Future<List<ChuckCategoryModel>> getChuckCategoryList() =>
       chuckRemoteDataSource.getChuckCategoryList();
+
+  @override
+  Future<ChuckJokeModel> getChuckJoke({required String chuckCategory}) {
+    throw UnimplementedError();
+  }
 }

@@ -6,16 +6,18 @@ part 'chuck_joke_response.g.dart';
 class ChuckJokeResponse {
   ChuckJokeResponse(
     this.id,
-    this.icon_url,
+    this.iconUrl,
     this.url,
-    this.value,
+    this.joke,
   );
   factory ChuckJokeResponse.fromJson(Map<String, dynamic> json) =>
       _$ChuckJokeResponseFromJson(json);
   final String? id;
-  final String? icon_url;
+  @JsonKey(name: 'icon_url')
+  final String? iconUrl;
   final String? url;
-  final String? value;
+  @JsonKey(name: 'value')
+  final String? joke;
 
   Map<String, dynamic> toJson() => _$ChuckJokeResponseToJson(this);
 }
