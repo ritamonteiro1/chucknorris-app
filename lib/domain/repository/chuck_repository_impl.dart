@@ -11,7 +11,6 @@ class ChuckRepositoryImpl implements ChuckRepository {
   final ChuckRemoteDataSource chuckRemoteDataSource;
 
   @override
-  Future<List<ChuckCategoryModel>> getChuckCategoryList(
-          {required String category}) =>
-      chuckRemoteDataSource.getChuckCategoryList(category: category);
+  Future<List<ChuckCategoryModel>> getChuckCategoryList() =>
+      chuckRemoteDataSource.getChuckCategoryList();
 }

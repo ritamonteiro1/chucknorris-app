@@ -11,7 +11,6 @@ class GetChuckCategoryListUseCaseImpl implements GetChuckCategoryListUseCase {
   final ChuckRepository chuckRepository;
 
   @override
-  Future<List<ChuckCategoryModel>> getChuckCategoryList(
-          {required String category}) =>
-      chuckRepository.getChuckCategoryList(category: category);
+  Future<List<ChuckCategoryModel>> getChuckCategoryList() =>
+      chuckRepository.getChuckCategoryList();
 }

@@ -50,10 +50,10 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Chuck Norris`
+  /// `Chuck Norris - Categories`
   String get chuckCategoryScreenAppBarTitle {
     return Intl.message(
-      'Chuck Norris',
+      'Chuck Norris - Categories',
       name: 'chuckCategoryScreenAppBarTitle',
       desc: '',
       args: [],

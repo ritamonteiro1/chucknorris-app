@@ -15,12 +15,10 @@ class ChuckRemoteDataSourceImpl implements ChuckRemoteDataSource {
   static const _baseUrl = 'https://api.chucknorris.io/';
 
   @override
-  Future<List<ChuckCategoryModel>> getChuckCategoryList(
-      {required String category}) async {
+  Future<List<ChuckCategoryModel>> getChuckCategoryList() async {
     _dio.interceptors.add(LogInterceptor(responseBody: true));
     try {
-      final response =
-          await _dio.get('${_baseUrl}jokes/random?category=$category');
+      final response = await _dio.get('${_baseUrl}jokes/categories');
       final chuckCategoryList =
           ChuckCategoryListResponse.fromJson(response.data)
               .toChuckCategoryModel();
