@@ -1,16 +1,16 @@
-import 'package:chuck_norris_app/constants/constant_images.dart';
-import 'package:chuck_norris_app/generated/l10n.dart';
-import 'package:chuck_norris_app/modules/chuck/presentation/chuck/common/error_chuck_widget.dart';
-import 'package:chuck_norris_app/modules/chuck/presentation/chuck/common/loading_chuck_widget.dart';
-import 'package:chuck_norris_app/modules/chuck/presentation/chuck/joke/random/chuck_random_joke_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../../../constants/constant_images.dart';
+import '../../../../../../generated/l10n.dart';
 import '../../../../domain/exception/generic_error_status_code_exception.dart';
 import '../../../../domain/exception/unknown_state_type_exception.dart';
+import '../../common/error_chuck_widget.dart';
+import '../../common/loading_chuck_widget.dart';
 import '../common/chuck_joke_widget.dart';
 import 'chuck_random_joke_state.dart';
+import 'chuck_random_joke_store.dart';
 
 class ChuckRandomJokeScreen extends StatefulWidget {
   const ChuckRandomJokeScreen({Key? key}) : super(key: key);

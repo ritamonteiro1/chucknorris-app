@@ -8,7 +8,6 @@ import '../../../domain/exception/generic_error_status_code_exception.dart';
 import '../../../domain/exception/unknown_state_type_exception.dart';
 import '../common/error_chuck_widget.dart';
 import '../common/loading_chuck_widget.dart';
-import 'chuck_category_controller.dart';
 import 'chuck_category_list_widget.dart';
 import 'chuck_category_state.dart';
 import 'chuck_category_store.dart';

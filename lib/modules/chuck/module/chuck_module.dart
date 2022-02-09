@@ -12,10 +12,8 @@ import '../domain/use_case/get_chuck_category_list_use_case.dart';
 import '../domain/use_case/get_chuck_category_list_use_case_impl.dart';
 import '../domain/use_case/get_chuck_random_joke_use_case.dart';
 import '../domain/use_case/get_chuck_random_joke_use_case_impl.dart';
-import '../presentation/chuck/category/chuck_category_controller.dart';
 import '../presentation/chuck/category/chuck_category_screen.dart';
 import '../presentation/chuck/category/chuck_category_store.dart';
-import '../presentation/chuck/joke/category/chuck_category_joke_controller.dart';
 import '../presentation/chuck/joke/category/chuck_category_joke_screen.dart';
 import '../presentation/chuck/joke/category/chuck_category_joke_store.dart';
 import '../presentation/chuck/joke/random/chuck_random_joke_screen.dart';
@@ -37,8 +35,6 @@ class ChuckModule extends Module {
         Bind.factory((i) => ChuckCategoryStore(i())),
         Bind.factory((i) => ChuckRandomJokeStore(i())),
         Bind.factory((i) => ChuckCategoryJokeStore(i())),
-        Bind.factory((i) => ChuckCategoryController(i())),
-        Bind.factory((i) => ChuckCategoryJokeController(i())),
       ];
 
   @override

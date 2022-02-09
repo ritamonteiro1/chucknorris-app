@@ -1,5 +1,3 @@
-import 'package:chuck_norris_app/modules/chuck/presentation/chuck/common/loading_chuck_widget.dart';
-import 'package:chuck_norris_app/modules/chuck/presentation/chuck/joke/category/chuck_category_joke_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -10,8 +8,10 @@ import '../../../../constants/constant_joke_routes.dart';
 import '../../../../domain/exception/generic_error_status_code_exception.dart';
 import '../../../../domain/exception/unknown_state_type_exception.dart';
 import '../../common/error_chuck_widget.dart';
+import '../../common/loading_chuck_widget.dart';
 import '../common/chuck_joke_widget.dart';
 import 'chuck_category_joke_state.dart';
+import 'chuck_category_joke_store.dart';
 
 class ChuckCategoryJokeScreen extends StatefulWidget {
   const ChuckCategoryJokeScreen({
@@ -63,7 +63,7 @@ class _ChuckCategoryJokeScreenState
                   ),
                   GestureDetector(
                     onTap: () => Modular.to
-                        .navigate(ConstantChuckRoutes.chuckRandomJokeScreen),
+                        .pushNamed(ConstantChuckRoutes.chuckRandomJokeScreen),
                     child: Card(
                       elevation: 6,
                       child: Padding(

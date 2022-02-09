@@ -17,7 +17,7 @@ class ChuckCategoryListWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           final chuckCategory = chuckCategoryList[index];
           return ListTile(
-            onTap: () => Modular.to.navigate(
+            onTap: () => Modular.to.pushNamed(
                 '${ConstantChuckRoutes.chuckCategoryJokeScreen}${chuckCategory.title}'),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
             title: Text(chuckCategory.title),
