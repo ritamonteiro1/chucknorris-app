@@ -1,4 +1,4 @@
-import 'package:chuck_norris_app/domain/model/joke/chuck_joke_model.dart';
+import 'package:chuck_norris_app/modules/chuck/domain/model/joke/chuck_joke_model.dart';
 
 import '../../data/remote/data_source/chuck_remote_data_source.dart';
 import '../model/category/chuck_category_model.dart';

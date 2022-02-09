@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import '../constants/constant_colors.dart';
 import '../constants/constant_fonts.dart';
 import '../generated/l10n.dart';
-import '../presentation/chuck/category/chuck_category_screen.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class AppWidget extends StatelessWidget {
+  const AppWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
             iconColor: ConstantColor.primaryColor,
           ),
         ),
-        home: const ChuckCategoryScreen(),
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -35,5 +34,6 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: S.delegate.supportedLocales,
-      );
+        initialRoute: '/',
+      ).modular();
 }

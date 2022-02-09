@@ -1,6 +1,8 @@
-import '../../../domain/model/category/chuck_category_model.dart';
-import '../joke/category/chuck_category_joke_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../../constants/constant_joke_routes.dart';
+import '../../../domain/model/category/chuck_category_model.dart';
 
 class ChuckCategoryListWidget extends StatelessWidget {
   const ChuckCategoryListWidget({
@@ -15,12 +17,8 @@ class ChuckCategoryListWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           final chuckCategory = chuckCategoryList[index];
           return ListTile(
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) =>
-                    ChuckCategoryJokeScreen(chuckCategory: chuckCategory.title),
-              ),
-            ),
+            onTap: () => Modular.to.navigate(
+                '${ConstantChuckRoutes.chuckCategoryJokeScreen}${chuckCategory.title}'),
             trailing: const Icon(Icons.arrow_forward_ios_rounded),
             title: Text(chuckCategory.title),
           );

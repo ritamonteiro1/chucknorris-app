@@ -1,23 +1,17 @@
-import 'package:chuck_norris_app/domain/exception/generic_error_status_code_exception.dart';
-import 'package:chuck_norris_app/presentation/common/error_chuck_widget.dart';
-import 'package:dio/dio.dart';
+import 'package:chuck_norris_app/modules/chuck/presentation/chuck/common/loading_chuck_widget.dart';
+import 'package:chuck_norris_app/modules/chuck/presentation/chuck/joke/category/chuck_category_joke_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../constants/constant_images.dart';
-import '../../../../data/remote/data_source/chuck_remote_data_source.dart';
-import '../../../../data/remote/data_source/chuck_remote_data_source_impl.dart';
+import '../../../../../../constants/constant_images.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../constants/constant_joke_routes.dart';
+import '../../../../domain/exception/generic_error_status_code_exception.dart';
 import '../../../../domain/exception/unknown_state_type_exception.dart';
-import '../../../../domain/repository/chuck_repository.dart';
-import '../../../../domain/repository/chuck_repository_impl.dart';
-import '../../../../domain/use_case/get_chuck_category_joke_use_case.dart';
-import '../../../../domain/use_case/get_chuck_category_joke_use_case_impl.dart';
-import '../../../../generated/l10n.dart';
-import '../../../common/loading_chuck_widget.dart';
+import '../../common/error_chuck_widget.dart';
 import '../common/chuck_joke_widget.dart';
-import '../random/chuck_random_joke_screen.dart';
 import 'chuck_category_joke_state.dart';
-import 'chuck_category_joke_store.dart';
 
 class ChuckCategoryJokeScreen extends StatefulWidget {
   const ChuckCategoryJokeScreen({
@@ -31,22 +25,12 @@ class ChuckCategoryJokeScreen extends StatefulWidget {
       _ChuckCategoryJokeScreenState();
 }
 
-class _ChuckCategoryJokeScreenState extends State<ChuckCategoryJokeScreen> {
-  late ChuckRemoteDataSource chuckRemoteDataSource;
-  late ChuckRepository chuckRepository;
-  late GetChuckCategoryJokeUseCase getChuckCategoryJokeUseCase;
-  late ChuckCategoryJokeStore chuckCategoryJokeStore;
-
+class _ChuckCategoryJokeScreenState
+    extends ModularState<ChuckCategoryJokeScreen, ChuckCategoryJokeStore> {
   @override
   void initState() {
     super.initState();
-    chuckRemoteDataSource = ChuckRemoteDataSourceImpl(Dio());
-    chuckRepository = ChuckRepositoryImpl(chuckRemoteDataSource);
-    getChuckCategoryJokeUseCase =
-        GetChuckCategoryJokeUseCaseImpl(chuckRepository);
-    chuckCategoryJokeStore =
-        ChuckCategoryJokeStore(getChuckCategoryJokeUseCase);
-    chuckCategoryJokeStore.getChuckCategoryJoke(category: widget.chuckCategory);
+    controller.getChuckCategoryJoke(category: widget.chuckCategory);
   }
 
   @override
@@ -78,11 +62,8 @@ class _ChuckCategoryJokeScreenState extends State<ChuckCategoryJokeScreen> {
                     height: 16,
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const ChuckRandomJokeScreen(),
-                      ),
-                    ),
+                    onTap: () => Modular.to
+                        .navigate(ConstantChuckRoutes.chuckRandomJokeScreen),
                     child: Card(
                       elevation: 6,
                       child: Padding(
@@ -116,7 +97,7 @@ class _ChuckCategoryJokeScreenState extends State<ChuckCategoryJokeScreen> {
                   ),
                   Observer(builder: (context) {
                     final chuckCategoryJokeState =
-                        chuckCategoryJokeStore.chuckCategoryJokeState;
+                        controller.chuckCategoryJokeState;
                     if (chuckCategoryJokeState
                         is LoadingChuckCategoryJokeState) {
                       return const LoadingChuckWidget();
@@ -129,16 +110,14 @@ class _ChuckCategoryJokeScreenState extends State<ChuckCategoryJokeScreen> {
                       if (chuckCategoryJokeState.exception
                           is GenericErrorStatusCodeException) {
                         return ErrorChuckWidget(
-                          onPressed: () =>
-                              chuckCategoryJokeStore.getChuckCategoryJoke(
-                                  category: widget.chuckCategory),
+                          onPressed: () => controller.getChuckCategoryJoke(
+                              category: widget.chuckCategory),
                           message: S.of(context).messageGenericErrorText,
                         );
                       } else {
                         return ErrorChuckWidget(
-                          onPressed: () =>
-                              chuckCategoryJokeStore.getChuckCategoryJoke(
-                                  category: widget.chuckCategory),
+                          onPressed: () => controller.getChuckCategoryJoke(
+                              category: widget.chuckCategory),
                           message: S.of(context).messageConnectionFailText,
                         );
                       }
