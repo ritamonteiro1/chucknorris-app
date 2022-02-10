@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../constants/constant_joke_routes.dart';
+import '../constants/constant_chuck_routes.dart';
 import '../data/remote/data_source/chuck_remote_data_source.dart';
 import '../data/remote/data_source/chuck_remote_data_source_impl.dart';
 import '../domain/repository/chuck_repository.dart';

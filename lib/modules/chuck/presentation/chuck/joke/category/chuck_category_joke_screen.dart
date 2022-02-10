@@ -4,7 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../../constants/constant_images.dart';
 import '../../../../../../generated/l10n.dart';
-import '../../../../constants/constant_joke_routes.dart';
+import '../../../../constants/constant_chuck_routes.dart';
 import '../../../../domain/exception/generic_error_status_code_exception.dart';
 import '../../../../domain/exception/unknown_state_type_exception.dart';
 import '../../common/error_chuck_widget.dart';

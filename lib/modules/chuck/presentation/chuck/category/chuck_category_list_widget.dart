@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../constants/constant_joke_routes.dart';
+import '../../../constants/constant_chuck_routes.dart';
 import '../../../domain/model/category/chuck_category_model.dart';
 
 class ChuckCategoryListWidget extends StatelessWidget {
