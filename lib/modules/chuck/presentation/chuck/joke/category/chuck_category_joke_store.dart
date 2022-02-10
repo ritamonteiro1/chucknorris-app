@@ -23,8 +23,8 @@ abstract class _ChuckCategoryJokeStore with Store {
   Future<void> getChuckCategoryJoke({required String category}) async {
     chuckCategoryJokeState = LoadingChuckCategoryJokeState();
     try {
-      final joke = await getChuckCategoryJokeUseCase.getChuckJoke(
-          chuckCategory: category);
+      final joke =
+          await getChuckCategoryJokeUseCase.call(chuckCategory: category);
       chuckCategoryJokeState = SuccessChuckCategoryJokeState(joke);
     } on Exception catch (e) {
       chuckCategoryJokeState = ErrorChuckCategoryJokeState(e);

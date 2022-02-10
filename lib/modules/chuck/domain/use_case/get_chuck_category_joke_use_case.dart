@@ -1,5 +1,5 @@
 import '../model/joke/chuck_joke_model.dart';
 
-mixin GetChuckCategoryJokeUseCase{
-  Future<ChuckJokeModel> getChuckJoke({required String chuckCategory});
+mixin GetChuckCategoryJokeUseCase {
+  Future<ChuckJokeModel> call({required String chuckCategory});
 }

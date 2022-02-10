@@ -1,5 +1,5 @@
 import '../model/joke/chuck_joke_model.dart';
 
 mixin GetChuckRandomJokeUseCase {
-  Future<ChuckJokeModel> getChuckRandomJoke();
+  Future<ChuckJokeModel> call();
 }

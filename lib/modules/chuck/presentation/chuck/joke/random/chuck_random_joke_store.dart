@@ -21,7 +21,7 @@ abstract class _ChuckRandomJokeStore with Store {
   Future<void> getChuckRandomJoke() async {
     chuckRandomJokeState = LoadingChuckRandomJokeState();
     try {
-      final joke = await getChuckRandomJokeUseCase.getChuckRandomJoke();
+      final joke = await getChuckRandomJokeUseCase.call();
       chuckRandomJokeState = SuccessChuckRandomJokeState(joke);
     } on Exception catch (e) {
       chuckRandomJokeState = ErrorChuckRandomJokeState(e);

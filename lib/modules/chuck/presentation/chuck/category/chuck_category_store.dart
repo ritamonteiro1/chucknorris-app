@@ -21,8 +21,7 @@ abstract class _ChuckCategoryStore with Store {
   Future<void> getChuckCategoryList() async {
     chuckCategoryState = LoadingChuckCategoryState();
     try {
-      final chuckCategoryList =
-          await getChuckCategoryListUseCase.getChuckCategoryList();
+      final chuckCategoryList = await getChuckCategoryListUseCase.call();
       chuckCategoryState = SuccessChuckCategoryState(chuckCategoryList);
     } on Exception catch (e) {
       chuckCategoryState = ErrorChuckCategoryState(e);
