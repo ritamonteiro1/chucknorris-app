@@ -3,8 +3,7 @@ import '../../domain/model/joke/chuck_joke_model.dart';
 import '../remote/model/category/chuck_category_response.dart';
 import '../remote/model/joke/chuck_joke_response.dart';
 
-extension ChuckCategoryListToChuckCategoryModelon
-    on List<ChuckCategoryResponse> {
+extension ChuckCategoryListToChuckCategoryModel on List<ChuckCategoryResponse> {
   List<ChuckCategoryModel> toChuckCategoryModel() =>
       map((item) => ChuckCategoryModel(
             item.title ?? ' - ',
