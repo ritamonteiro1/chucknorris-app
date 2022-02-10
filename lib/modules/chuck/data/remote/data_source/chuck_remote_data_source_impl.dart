@@ -9,9 +9,9 @@ import '../model/joke/chuck_joke_response.dart';
 import 'chuck_remote_data_source.dart';
 
 class ChuckRemoteDataSourceImpl implements ChuckRemoteDataSource {
-  ChuckRemoteDataSourceImpl(
-    this._dio,
-  );
+  ChuckRemoteDataSourceImpl({
+    required Dio dio,
+  }) : _dio = dio;
 
   final Dio _dio;
   static const _baseUrl = 'https://api.chucknorris.io/';

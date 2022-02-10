@@ -15,10 +15,12 @@ import 'chuck_category_joke_store.dart';
 
 class ChuckCategoryJokeScreen extends StatefulWidget {
   const ChuckCategoryJokeScreen({
-    required this.chuckCategory,
+    required String chuckCategory,
     Key? key,
-  }) : super(key: key);
-  final String chuckCategory;
+  })  : _chuckCategory = chuckCategory,
+        super(key: key);
+
+  final String _chuckCategory;
 
   @override
   _ChuckCategoryJokeScreenState createState() =>
@@ -30,7 +32,7 @@ class _ChuckCategoryJokeScreenState
   @override
   void initState() {
     super.initState();
-    controller.getChuckCategoryJoke(category: widget.chuckCategory);
+    controller.getChuckCategoryJoke(category: widget._chuckCategory);
   }
 
   @override
@@ -111,13 +113,13 @@ class _ChuckCategoryJokeScreenState
                           is GenericErrorStatusCodeException) {
                         return ErrorChuckWidget(
                           onPressed: () => controller.getChuckCategoryJoke(
-                              category: widget.chuckCategory),
+                              category: widget._chuckCategory),
                           message: S.of(context).messageGenericErrorText,
                         );
                       } else {
                         return ErrorChuckWidget(
                           onPressed: () => controller.getChuckCategoryJoke(
-                              category: widget.chuckCategory),
+                              category: widget._chuckCategory),
                           message: S.of(context).messageConnectionFailText,
                         );
                       }

@@ -8,11 +8,11 @@ part 'chuck_category_store.g.dart';
 class ChuckCategoryStore = _ChuckCategoryStore with _$ChuckCategoryStore;
 
 abstract class _ChuckCategoryStore with Store {
-  _ChuckCategoryStore(
-    this.getChuckCategoryListUseCase,
-  );
+  _ChuckCategoryStore({
+    required GetChuckCategoryListUseCase getChuckCategoryListUseCase,
+  }) : _getChuckCategoryListUseCase = getChuckCategoryListUseCase;
 
-  final GetChuckCategoryListUseCase getChuckCategoryListUseCase;
+  final GetChuckCategoryListUseCase _getChuckCategoryListUseCase;
 
   @observable
   ChuckCategoryState chuckCategoryState = LoadingChuckCategoryState();
@@ -21,7 +21,7 @@ abstract class _ChuckCategoryStore with Store {
   Future<void> getChuckCategoryList() async {
     chuckCategoryState = LoadingChuckCategoryState();
     try {
-      final chuckCategoryList = await getChuckCategoryListUseCase.call();
+      final chuckCategoryList = await _getChuckCategoryListUseCase.call();
       chuckCategoryState = SuccessChuckCategoryState(chuckCategoryList);
     } on Exception catch (e) {
       chuckCategoryState = ErrorChuckCategoryState(e);

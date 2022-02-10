@@ -4,8 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../constants/constant_chuck_routes.dart';
 import '../data/remote/data_source/chuck_remote_data_source.dart';
 import '../data/remote/data_source/chuck_remote_data_source_impl.dart';
-import '../domain/repository/chuck_repository.dart';
 import '../data/remote/repository_impl/chuck_repository_impl.dart';
+import '../domain/repository/chuck_repository.dart';
 import '../domain/use_case/get_chuck_category_joke_use_case.dart';
 import '../domain/use_case/get_chuck_category_joke_use_case_impl.dart';
 import '../domain/use_case/get_chuck_category_list_use_case.dart';
@@ -24,17 +24,21 @@ class ChuckModule extends Module {
   List<Bind> get binds => [
         Bind.lazySingleton((i) => Dio()),
         Bind.lazySingleton<ChuckRemoteDataSource>(
-            (i) => ChuckRemoteDataSourceImpl(i())),
-        Bind.lazySingleton<ChuckRepository>((i) => ChuckRepositoryImpl(i())),
+            (i) => ChuckRemoteDataSourceImpl(dio: i())),
+        Bind.lazySingleton<ChuckRepository>(
+            (i) => ChuckRepositoryImpl(chuckRemoteDataSource: i())),
         Bind.lazySingleton<GetChuckCategoryListUseCase>(
-            (i) => GetChuckCategoryListUseCaseImpl(i())),
+            (i) => GetChuckCategoryListUseCaseImpl(chuckRepository: i())),
         Bind.lazySingleton<GetChuckCategoryJokeUseCase>(
-            (i) => GetChuckCategoryJokeUseCaseImpl(i())),
+            (i) => GetChuckCategoryJokeUseCaseImpl(chuckRepository: i())),
         Bind.lazySingleton<GetChuckRandomJokeUseCase>(
-            (i) => GetChuckRandomJokeUseCaseImpl(i())),
-        Bind.factory((i) => ChuckCategoryStore(i())),
-        Bind.factory((i) => ChuckRandomJokeStore(i())),
-        Bind.factory((i) => ChuckCategoryJokeStore(i())),
+            (i) => GetChuckRandomJokeUseCaseImpl(chuckRepository: i())),
+        Bind.factory(
+            (i) => ChuckCategoryStore(getChuckCategoryListUseCase: i())),
+        Bind.factory(
+            (i) => ChuckRandomJokeStore(getChuckRandomJokeUseCase: i())),
+        Bind.factory(
+            (i) => ChuckCategoryJokeStore(getChuckCategoryJokeUseCase: i())),
       ];
 
   @override

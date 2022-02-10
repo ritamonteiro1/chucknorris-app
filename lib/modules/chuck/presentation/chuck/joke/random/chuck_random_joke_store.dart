@@ -8,11 +8,11 @@ part 'chuck_random_joke_store.g.dart';
 class ChuckRandomJokeStore = _ChuckRandomJokeStore with _$ChuckRandomJokeStore;
 
 abstract class _ChuckRandomJokeStore with Store {
-  _ChuckRandomJokeStore(
-    this.getChuckRandomJokeUseCase,
-  );
+  _ChuckRandomJokeStore({
+    required GetChuckRandomJokeUseCase getChuckRandomJokeUseCase,
+  }) : _getChuckRandomJokeUseCase = getChuckRandomJokeUseCase;
 
-  final GetChuckRandomJokeUseCase getChuckRandomJokeUseCase;
+  final GetChuckRandomJokeUseCase _getChuckRandomJokeUseCase;
 
   @observable
   ChuckRandomJokeState chuckRandomJokeState = LoadingChuckRandomJokeState();
@@ -21,7 +21,7 @@ abstract class _ChuckRandomJokeStore with Store {
   Future<void> getChuckRandomJoke() async {
     chuckRandomJokeState = LoadingChuckRandomJokeState();
     try {
-      final joke = await getChuckRandomJokeUseCase.call();
+      final joke = await _getChuckRandomJokeUseCase.call();
       chuckRandomJokeState = SuccessChuckRandomJokeState(joke);
     } on Exception catch (e) {
       chuckRandomJokeState = ErrorChuckRandomJokeState(e);

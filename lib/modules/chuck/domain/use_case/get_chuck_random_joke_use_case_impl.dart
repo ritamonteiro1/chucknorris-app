@@ -4,12 +4,12 @@ import '../repository/chuck_repository.dart';
 import 'get_chuck_random_joke_use_case.dart';
 
 class GetChuckRandomJokeUseCaseImpl implements GetChuckRandomJokeUseCase {
-  GetChuckRandomJokeUseCaseImpl(
-    this.chuckRepository,
-  );
+  GetChuckRandomJokeUseCaseImpl({
+    required ChuckRepository chuckRepository,
+  }) : _chuckRepository = chuckRepository;
 
-  final ChuckRepository chuckRepository;
+  final ChuckRepository _chuckRepository;
 
   @override
-  Future<ChuckJokeModel> call() => chuckRepository.getChuckRandomJoke();
+  Future<ChuckJokeModel> call() => _chuckRepository.getChuckRandomJoke();
 }
