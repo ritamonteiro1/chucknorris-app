@@ -1,10 +1,10 @@
+import 'package:chuck_norris_app/modules/chuck/data/repository_impl/chuck_repository_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../constants/constant_chuck_routes.dart';
 import '../data/remote/data_source/chuck_remote_data_source.dart';
 import '../data/remote/data_source/chuck_remote_data_source_impl.dart';
-import '../data/remote/repository_impl/chuck_repository_impl.dart';
 import '../domain/repository/chuck_repository.dart';
 import '../domain/use_case/get_chuck_category_joke_use_case.dart';
 import '../domain/use_case/get_chuck_category_joke_use_case_impl.dart';

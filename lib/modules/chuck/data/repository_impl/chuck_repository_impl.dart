@@ -1,7 +1,7 @@
-import '../../../domain/model/category/chuck_category_model.dart';
-import '../../../domain/model/joke/chuck_joke_model.dart';
-import '../../../domain/repository/chuck_repository.dart';
-import '../data_source/chuck_remote_data_source.dart';
+import 'package:chuck_norris_app/modules/chuck/data/remote/data_source/chuck_remote_data_source.dart';
+import 'package:chuck_norris_app/modules/chuck/domain/model/category/chuck_category_model.dart';
+import 'package:chuck_norris_app/modules/chuck/domain/model/joke/chuck_joke_model.dart';
+import 'package:chuck_norris_app/modules/chuck/domain/repository/chuck_repository.dart';
 
 class ChuckRepositoryImpl implements ChuckRepository {
   ChuckRepositoryImpl({
