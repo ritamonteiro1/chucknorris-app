@@ -1,6 +1,9 @@
+import 'package:chuck_norris_app/modules/chuck/data/cache/data_source/chuck_cache_data_source.dart';
+import 'package:chuck_norris_app/modules/chuck/data/cache/data_source/chuck_cache_data_source_impl.dart';
 import 'package:chuck_norris_app/modules/chuck/data/repository_impl/chuck_repository_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:hive/hive.dart';
 
 import '../constants/constant_chuck_routes.dart';
 import '../data/remote/data_source/chuck_remote_data_source.dart';
@@ -23,10 +26,13 @@ class ChuckModule extends Module {
   @override
   List<Bind> get binds => [
         Bind.lazySingleton((i) => Dio()),
+        Bind.lazySingleton((i) => Hive),
+        Bind.lazySingleton<ChuckCacheDataSource>(
+            (i) => ChuckCacheDataSourceImpl(hive: i())),
         Bind.lazySingleton<ChuckRemoteDataSource>(
             (i) => ChuckRemoteDataSourceImpl(dio: i())),
-        Bind.lazySingleton<ChuckRepository>(
-            (i) => ChuckRepositoryImpl(chuckRemoteDataSource: i())),
+        Bind.lazySingleton<ChuckRepository>((i) => ChuckRepositoryImpl(
+            chuckRemoteDataSource: i(), chuckCacheDataSource: i())),
         Bind.lazySingleton<GetChuckCategoryListUseCase>(
             (i) => GetChuckCategoryListUseCaseImpl(chuckRepository: i())),
         Bind.lazySingleton<GetChuckCategoryJokeUseCase>(

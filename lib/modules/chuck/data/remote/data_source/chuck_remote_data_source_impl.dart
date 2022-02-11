@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 import '../../../domain/exception/generic_error_status_code_exception.dart';
 import '../../../domain/model/category/chuck_category_model.dart';
 import '../../../domain/model/joke/chuck_joke_model.dart';
-import '../../mapper/remote_do_model.dart';
+import '../../mapper/remote_to_model.dart';
 import '../model/category/chuck_category_response.dart';
 import '../model/joke/chuck_joke_response.dart';
 import 'chuck_remote_data_source.dart';
