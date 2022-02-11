@@ -4,6 +4,6 @@ import 'package:chuck_norris_app/modules/chuck/domain/model/category/chuck_categ
 extension ChuckCategoryListModelToChuckCategoryListCM on List<ChuckCategoryCM> {
   List<ChuckCategoryModel> toChuckCategoryModel() =>
       map((item) => ChuckCategoryModel(
-            item.title ?? ' - ',
+            item.title,
           )).toList();
 }

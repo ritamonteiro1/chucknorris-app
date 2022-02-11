@@ -1,3 +1,4 @@
+import 'package:chuck_norris_app/modules/chuck/domain/exception/null_chuck_category_list_cm_exception.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -62,6 +63,12 @@ class _ChuckCategoryScreenState
                 return ErrorChuckWidget(
                   onPressed: controller.getChuckCategoryList,
                   message: S.of(context).messageGenericErrorText,
+                );
+              } else if (chuckCategoryState.exception
+                  is NullChuckCategoryListCMException) {
+                return ErrorChuckWidget(
+                  onPressed: controller.getChuckCategoryList,
+                  message: S.of(context).messageConnectionFailText,
                 );
               } else {
                 return ErrorChuckWidget(

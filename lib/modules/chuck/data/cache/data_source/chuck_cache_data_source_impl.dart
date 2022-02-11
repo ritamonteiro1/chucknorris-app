@@ -1,3 +1,5 @@
+import '../../../domain/exception/null_chuck_category_list_cm_exception.dart';
+
 import '../model/chuck_category_cm.dart';
 import 'package:hive/hive.dart';
 
@@ -18,10 +20,13 @@ class ChuckCacheDataSourceImpl implements ChuckCacheDataSource {
   @override
   Future<List<ChuckCategoryModel>> getChuckCategoryList() async {
     final box = await Hive.openBox(_chuckCategoryListKeyString);
-    final chuckCategoryListCM =
-        List<ChuckCategoryCM>.from(box.get(_chuckCategoryListKeyInt));
-    final chuckCategoryListModel = chuckCategoryListCM.toChuckCategoryModel();
-    return chuckCategoryListModel;
+    if (box.isNotEmpty) {
+      final chuckCategoryListCM =
+          List<ChuckCategoryCM>.from(box.get(_chuckCategoryListKeyInt));
+      return chuckCategoryListCM.toChuckCategoryModel();
+    } else {
+      throw NullChuckCategoryListCMException();
+    }
   }
 
   @override

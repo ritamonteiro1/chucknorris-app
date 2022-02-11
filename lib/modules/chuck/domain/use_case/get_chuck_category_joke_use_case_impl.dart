@@ -10,6 +10,6 @@ class GetChuckCategoryJokeUseCaseImpl implements GetChuckCategoryJokeUseCase {
   final ChuckRepository _chuckRepository;
 
   @override
-  Future<ChuckJokeModel> call({required String chuckCategory}) =>
+  Future<ChuckJokeModel> call({required String chuckCategory}) async =>
       _chuckRepository.getChuckJoke(chuckCategory: chuckCategory);
 }

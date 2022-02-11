@@ -10,6 +10,6 @@ class GetChuckCategoryListUseCaseImpl implements GetChuckCategoryListUseCase {
   final ChuckRepository _chuckRepository;
 
   @override
-  Future<List<ChuckCategoryModel>> call() =>
+  Future<List<ChuckCategoryModel>> call() async =>
       _chuckRepository.getChuckCategoryList();
 }

@@ -11,5 +11,5 @@ class GetChuckRandomJokeUseCaseImpl implements GetChuckRandomJokeUseCase {
   final ChuckRepository _chuckRepository;
 
   @override
-  Future<ChuckJokeModel> call() => _chuckRepository.getChuckRandomJoke();
+  Future<ChuckJokeModel> call() async => _chuckRepository.getChuckRandomJoke();
 }
