@@ -1,3 +1,4 @@
+import 'package:chuck_norris_app/modules/chuck/constants/constant_chuck_url_api.dart';
 import 'package:chuck_norris_app/modules/chuck/data/remote/data_source/chuck_remote_data_source_impl.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -29,6 +30,9 @@ void main() {
         (_) async => _getSuccessfulResponseMock(json),
       );
       await chuckRemoteDataSourceImpl.getChuckCategoryList();
+      verify(mockDio.get(
+        '${ConstantChuckUrlApi.chuckBaseUrl}jokes/categories',
+      )).called(1);
     });
   });
   group('GIVEN a call on getChuckJoke', () {
