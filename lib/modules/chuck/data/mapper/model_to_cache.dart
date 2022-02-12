@@ -1,5 +1,5 @@
-import 'package:chuck_norris_app/modules/chuck/data/cache/model/chuck_category_cm.dart';
-import 'package:chuck_norris_app/modules/chuck/domain/model/category/chuck_category_model.dart';
+import '../../domain/model/category/chuck_category_model.dart';
+import '../cache/model/chuck_category_cm.dart';
 
 extension ChuckCategoryListModelToChuckCategoryListCM
     on List<ChuckCategoryModel> {

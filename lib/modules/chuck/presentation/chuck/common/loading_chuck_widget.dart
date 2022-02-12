@@ -1,5 +1,6 @@
-import 'package:chuck_norris_app/constants/constant_colors.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../constants/constant_colors.dart';
 
 class LoadingChuckWidget extends StatelessWidget {
   const LoadingChuckWidget({Key? key}) : super(key: key);
