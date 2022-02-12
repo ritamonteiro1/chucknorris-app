@@ -17,7 +17,19 @@ void main() {
   setUp(() {
     reset(mockDio);
   });
-  group('GIVEN a call on getChuckCategoryList', () {});
-  group('GIVEN a call on getChuckJoke', () {});
-  group('GIVEN a call on getChuckRandomJoke', () {});
+  group('GIVEN a call on getChuckCategoryList', () {
+    const getChuckCategoryListResponsePath =
+        'test_resources/get_chuck_category_list_response.json';
+    test('THEN verify if correct url is called', () {});
+  });
+  group('GIVEN a call on getChuckJoke', () {
+    const getChuckJokeResponsePath =
+        'test_resources/get_chuck_joke_response.json';
+    test('THEN verify if correct url is called', () {});
+  });
+  group('GIVEN a call on getChuckRandomJoke', () {
+    const getChuckRandomJokeResponsePath =
+        'test_resources/get_chuck_random_joke_response.json';
+    test('THEN verify if correct url is called', () {});
+  });
 }
