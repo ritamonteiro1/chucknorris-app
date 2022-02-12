@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../../../constants/constant_chuck_url_api.dart';
 import '../../../domain/exception/generic_error_status_code_exception.dart';
 import '../../../domain/model/category/chuck_category_model.dart';
 import '../../../domain/model/joke/chuck_joke_model.dart';
@@ -14,13 +15,13 @@ class ChuckRemoteDataSourceImpl implements ChuckRemoteDataSource {
   }) : _dio = dio;
 
   final Dio _dio;
-  static const _baseUrl = 'https://api.chucknorris.io/';
 
   @override
   Future<List<ChuckCategoryModel>> getChuckCategoryList() async {
     _dio.interceptors.add(LogInterceptor(responseBody: true));
     try {
-      final response = await _dio.get('${_baseUrl}jokes/categories');
+      final response =
+          await _dio.get('${ConstantChuckUrlApi.chuckBaseUrl}jokes/categories');
       final chuckCategoryList =
           ChuckCategoryResponse.fromJsonList(response.data);
       return chuckCategoryList.toChuckCategoryModel();
@@ -37,8 +38,8 @@ class ChuckRemoteDataSourceImpl implements ChuckRemoteDataSource {
   Future<ChuckJokeModel> getChuckJoke({required String chuckCategory}) async {
     _dio.interceptors.add(LogInterceptor(responseBody: true));
     try {
-      final response =
-          await _dio.get('${_baseUrl}jokes/random?category=$chuckCategory');
+      final response = await _dio.get(
+          '${ConstantChuckUrlApi.chuckBaseUrl}jokes/random?category=$chuckCategory');
       final chuckJoke =
           ChuckJokeResponse.fromJson(response.data).toChuckJokeModel();
       return chuckJoke;
@@ -55,7 +56,8 @@ class ChuckRemoteDataSourceImpl implements ChuckRemoteDataSource {
   Future<ChuckJokeModel> getChuckRandomJoke() async {
     _dio.interceptors.add(LogInterceptor(responseBody: true));
     try {
-      final response = await _dio.get('${_baseUrl}jokes/random');
+      final response =
+          await _dio.get('${ConstantChuckUrlApi.chuckBaseUrl}jokes/random');
       final chuckJoke =
           ChuckJokeResponse.fromJson(response.data).toChuckJokeModel();
       return chuckJoke;
