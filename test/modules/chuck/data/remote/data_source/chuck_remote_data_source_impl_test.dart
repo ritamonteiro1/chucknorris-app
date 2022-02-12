@@ -17,4 +17,7 @@ void main() {
   setUp(() {
     reset(mockDio);
   });
+  group('GIVEN a call on getChuckCategoryList', () {});
+  group('GIVEN a call on getChuckJoke', () {});
+  group('GIVEN a call on getChuckRandomJoke', () {});
 }
